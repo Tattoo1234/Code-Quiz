@@ -63,9 +63,11 @@ for (let i = 0; i < answerArray.length; i++)
         }
     })
 
-  answerOne.textContent = "commas";
-  answerTwo.textContent = "curly brakets"
-  answerThree.textContent = "quotes"
-  answerFour.textContent = "parenthesis"
 
+function switchQuestion() {
+answerOne.textContent = "commas";
+answerTwo.textContent = "curly brakets";
+answerThree.textContent = "quotes";
+answerFour.textContent = "parenthesis";
+}
 
