@@ -3,10 +3,11 @@ var pageTwoEl = document.querySelector("#secondPage")
 var pageThreeEl = document.querySelector("#thirdPage")
 var pageFourEl = document.querySelector("#fourthPage")
 var timerEl = document.getElementById('timer');
+var firstQuestion = document.querySelector('#first-question')
 
 
 function countdown() {
-    var timeLeft = 10;
+    var timeLeft = 60;
 
     // Use the `setInterval()` method to call a function to be executed every 1000 milliseconds
     var timeInterval = setInterval(function () {
@@ -54,7 +55,7 @@ var correctAnswer = answerThree
 
 for (let i = 0; i < answerArray.length; i++)
     answerArray[i].addEventListener("click", function (event) {
-
+        switchQuestion()
         if (correctAnswer === event.target) {
             console.log("correct")
         }
@@ -65,9 +66,23 @@ for (let i = 0; i < answerArray.length; i++)
 
 
 function switchQuestion() {
-answerOne.textContent = "commas";
-answerTwo.textContent = "curly brakets";
-answerThree.textContent = "quotes";
-answerFour.textContent = "parenthesis";
+    firstQuestion.textContent = "String values must be enclosed within______ when being assigned to variables."
+    answerOne.textContent = "commas";
+    answerTwo.textContent = "curly brakets";
+    answerThree.textContent = "quotes";
+    answerFour.textContent = "parenthesis";
+
+    for (let i = 0; i < answerArray.length; i++)
+    answerArray[i].addEventListener("click", function (event) {
+       
+        if (correctAnswer === event.target) {
+            console.log("correct")
+        }
+        else {
+            console.log("incorrect")
+        }
+    })
 }
+
+pageThreeEl.classList.toggle("hide");
 
