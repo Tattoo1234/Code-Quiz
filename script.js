@@ -4,10 +4,10 @@ var pageThreeEl = document.querySelector("#thirdPage")
 var pageFourEl = document.querySelector("#fourthPage")
 var timerEl = document.getElementById('timer');
 var firstQuestion = document.querySelector('#first-question')
-
+var timeLeft = 75;
 
 function countdown() {
-    var timeLeft = 60;
+    // var timeLeft = 75;
 
     // Use the `setInterval()` method to call a function to be executed every 1000 milliseconds
     var timeInterval = setInterval(function () {
@@ -52,16 +52,39 @@ var answerFour = pageTwoEl.children[1].children[3]
 var answerArray = [answerOne, answerTwo, answerThree, answerFour]
 
 var correctAnswer = answerThree
-
+var questionNumber = 1
+// add event Listener for answer button
 for (let i = 0; i < answerArray.length; i++)
     answerArray[i].addEventListener("click", function (event) {
-        switchQuestion()
+
         if (correctAnswer === event.target) {
-            console.log("correct")
+            console.log("correct");
         }
         else {
-            console.log("incorrect")
+            console.log("incorrect");
+            timeLeft = timeLeft -10;
+            
+        
         }
+// switches pages after question is answered
+        if (questionNumber == 1) {
+            switchQuestion()
+        }
+        else {
+            pageTwoEl.classList.toggle("hide");
+            pageThreeEl.classList.toggle("hide");
+        }
+
+        // checks answer and logs it logs correct, logs incorrect and substracts 10 seconds
+        // if (correctAnswer === event.target) {
+        //     console.log("correct");
+        // }
+        // else {
+        //     console.log("incorrect");
+        //     timeLeft = timeLeft -10;
+
+        
+        // }
     })
 
 
@@ -72,17 +95,8 @@ function switchQuestion() {
     answerThree.textContent = "quotes";
     answerFour.textContent = "parenthesis";
 
-    for (let i = 0; i < answerArray.length; i++)
-    answerArray[i].addEventListener("click", function (event) {
-       
-        if (correctAnswer === event.target) {
-            console.log("correct")
-        }
-        else {
-            console.log("incorrect")
-        }
-    })
+    questionNumber = 2
 }
 
-pageThreeEl.classList.toggle("hide");
+
 
