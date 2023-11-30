@@ -7,7 +7,8 @@ var firstQuestion = document.querySelector('#first-question')
 var finalScore = document.querySelector("#final-score")
 var timeLeft = 75;
 var timeInterval
-
+var highScores = document.querySelector("#high-scores");
+var initials = document.querySelector("#initials")
 function countdown() {
 
     // Use the `setInterval()` method to call a function to be executed every 1000 milliseconds
@@ -84,12 +85,15 @@ for (let i = 0; i < answerArray.length; i++)
         document.querySelector("#submit-button")
             .addEventListener('click', lastPage)
 
+
     })
 
 
 function lastPage() {
     pageThreeEl.classList.toggle("hide");
     pageFourEl.classList.toggle("hide");
+    highScores.textContent = initials.value + ' ' + timeLeft
+    
 }
 
 function switchQuestion() {
@@ -100,12 +104,4 @@ function switchQuestion() {
     answerFour.textContent = "parenthesis";
 
     questionNumber = 2
-
-
-
-
-    // document.querySelector("#submit-button")
-    //     .addEventListener('click', switchPages)
-    // pageThreeEl.classList.toggle("hide");
-    // pageFourEl.classList.toggle("hide");
 }
