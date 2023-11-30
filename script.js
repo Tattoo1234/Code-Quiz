@@ -4,13 +4,14 @@ var pageThreeEl = document.querySelector("#thirdPage")
 var pageFourEl = document.querySelector("#fourthPage")
 var timerEl = document.getElementById('timer');
 var firstQuestion = document.querySelector('#first-question')
+var finalScore = document.querySelector("#final-score")
 var timeLeft = 75;
+var timeInterval
 
 function countdown() {
-    // var timeLeft = 75;
 
     // Use the `setInterval()` method to call a function to be executed every 1000 milliseconds
-    var timeInterval = setInterval(function () {
+    timeInterval = setInterval(function () {
         // As long as the `timeLeft` is greater than 1
         if (timeLeft > 1) {
             // Set the `textContent` of `timerEl` to show the remaining seconds
@@ -56,37 +57,40 @@ var questionNumber = 1
 // add event Listener for answer button
 for (let i = 0; i < answerArray.length; i++)
     answerArray[i].addEventListener("click", function (event) {
-
+        // checks answer and logs it logs correct, logs incorrect and substracts 10 seconds
         if (correctAnswer === event.target) {
             console.log("correct");
         }
         else {
             console.log("incorrect");
-            timeLeft = timeLeft -10;
-            
-        
+            timeLeft = timeLeft - 10;
+
+
         }
-// switches pages after question is answered
+        // switches pages after question is answered
         if (questionNumber == 1) {
             switchQuestion()
         }
         else {
             pageTwoEl.classList.toggle("hide");
             pageThreeEl.classList.toggle("hide");
+            clearInterval(timeInterval)
+            timerEl.textContent = timeLeft + ' seconds remaining';
+            finalScore.textContent = "Your final score is " + timeLeft
         }
 
-        // checks answer and logs it logs correct, logs incorrect and substracts 10 seconds
-        // if (correctAnswer === event.target) {
-        //     console.log("correct");
-        // }
-        // else {
-        //     console.log("incorrect");
-        //     timeLeft = timeLeft -10;
 
-        
-        // }
+
+        document.querySelector("#submit-button")
+            .addEventListener('click', lastPage)
+
     })
 
+
+function lastPage() {
+    pageThreeEl.classList.toggle("hide");
+    pageFourEl.classList.toggle("hide");
+}
 
 function switchQuestion() {
     firstQuestion.textContent = "String values must be enclosed within______ when being assigned to variables."
@@ -96,7 +100,12 @@ function switchQuestion() {
     answerFour.textContent = "parenthesis";
 
     questionNumber = 2
+
+
+
+
+    // document.querySelector("#submit-button")
+    //     .addEventListener('click', switchPages)
+    // pageThreeEl.classList.toggle("hide");
+    // pageFourEl.classList.toggle("hide");
 }
-
-
-
