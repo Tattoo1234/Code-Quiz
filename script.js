@@ -9,6 +9,9 @@ var timeLeft = 75;
 var timeInterval
 var highScores = document.querySelector("#high-scores");
 var initials = document.querySelector("#initials")
+var memory = JSON.parse(localStorage.getItem("highScores")) || []
+
+
 function countdown() {
 
     // Use the `setInterval()` method to call a function to be executed every 1000 milliseconds
@@ -92,8 +95,16 @@ for (let i = 0; i < answerArray.length; i++)
 function lastPage() {
     pageThreeEl.classList.toggle("hide");
     pageFourEl.classList.toggle("hide");
-    highScores.textContent = initials.value + ' ' + timeLeft
-    
+    memory.push(initials.value + ' ' + timeLeft);
+    localStorage.setItem("highScores", JSON.stringify(memory));
+
+    for (let i = 0; i < memory.length; i++) {
+        var createLi = document.createElement("li");
+        createLi.textContent = memory[i]
+        highScores.appendChild(createLi);
+    }
+
+
 }
 
 function switchQuestion() {
