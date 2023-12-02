@@ -1,3 +1,4 @@
+// variables for Javascript page
 var pageOneEl = document.querySelector("#firstPage")
 var pageTwoEl = document.querySelector("#secondPage")
 var pageThreeEl = document.querySelector("#thirdPage")
@@ -12,6 +13,7 @@ var initials = document.querySelector("#initials")
 var memory = JSON.parse(localStorage.getItem("highScores")) || []
 
 
+// function to implement time keeping
 function countdown() {
 
     // Use the `setInterval()` method to call a function to be executed every 1000 milliseconds
@@ -36,19 +38,20 @@ function countdown() {
     }, 1000);
 }
 
-
+// javascript to begin code quiz
 document.querySelector("#startQuiz")
     .addEventListener("click", switchPages)
 
 
-function switchPages() {
+// user switches pages after code quiz is initiated
+    function switchPages() {
     countdown()
     pageOneEl.classList.toggle("hide");
     pageTwoEl.classList.toggle("hide");
 }
 
 
-
+// javascript to label answers 
 var answerOne = pageTwoEl.children[1].children[0]
 var answerTwo = pageTwoEl.children[1].children[1]
 var answerThree = pageTwoEl.children[1].children[2]
@@ -91,7 +94,7 @@ for (let i = 0; i < answerArray.length; i++)
 
     })
 
-
+// assigns score to local storage
 function lastPage() {
     pageThreeEl.classList.toggle("hide");
     pageFourEl.classList.toggle("hide");
@@ -107,6 +110,7 @@ function lastPage() {
 
 }
 
+// switches question one to question two
 function switchQuestion() {
     firstQuestion.textContent = "String values must be enclosed within______ when being assigned to variables."
     answerOne.textContent = "commas";

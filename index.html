@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<!-- meta data for html -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,13 +10,16 @@
 </head>
 
 <body>
+    <!-- header contains view high scores and time left -->
     <header id="timer">View high scores, Time:0</header>
+    <!-- first page/start page of Code Quiz -->
     <div id="firstPage">
         <h1>Coding Quiz Challenge</h1>
         <p>Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers
             will penalize your score/time by ten seconds!</p>
         <button id="startQuiz">Start Quiz</button>
     </div>
+    <!-- second page and first question (second question implemented in javascript) -->
     <div id="secondPage" class="hide">
         <h1 id="first-question">Commonly used data types DO Not Include</h1>
         <ol>
@@ -25,6 +29,7 @@
             <li>numbers</li>
         </ol>
     </div>
+    <!-- final score page after both questions are anwered -->
     <div id="thirdPage" class="hide">
         <h1>All done!</h1>
         <h2 id="final-score">Your final score is </h2>
@@ -32,12 +37,11 @@
         <Input id="initials"></Input>
         <button id=submit-button submit>submit</button>
     </div>
+    <!-- last page for high scores list -->
     <div id="fourthPage" class="hide">
         <h1>High Scores</h1>
         <ol id="high-scores">
         </ol>
-        <button id=goBack>Go back</button>
-        <button id=clearHighScores>Clear high scores</button>
     </div>
     <script src="script.js"></script>
 </body>
